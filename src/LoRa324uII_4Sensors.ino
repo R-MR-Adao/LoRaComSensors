@@ -112,7 +112,6 @@ void loop() {
   // data from BMP 280
   float     temp = bmp.getTemperature(); // (ºC)
   uint32_t  pres = bmp.getPressure();  // (Pa)
-  //float   alti = bmp.calAltitude(SEA_LEVEL_PRESSURE, pres);
   float     alti = 44330 * (1.00000f - pow((float) pres / 100 / SEA_LEVEL_PRESSURE, 0.1903)); // (m)
   // data from BME 280
   float     hum = bme.readHumidity(); // (%)
@@ -185,9 +184,7 @@ void loop() {
 
   counter++;
   digitalWrite(25, HIGH);   // turn the LED on (HIGH is the voltage level)
-  //delay(500);                       // wait for a second
   digitalWrite(25, LOW);    // turn the LED off by making the voltage LOW
-  //delay(500);
 }
 
 void printLastOperateStatus_BMP280(BMP::eStatus_t eStatus) // for bmp280
@@ -270,7 +267,6 @@ void SPEC_Data_read(){
     i = i + 1;
   }
   Serial.print("NO2_dataString: ");
-  //Serial.println(NO2_dataString);
 }
 
 
